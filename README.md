@@ -19,7 +19,7 @@ A RESTful API service for managing physics experiments. Built with **Go (Golang)
 ### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/ali-nur31/online-physics-experiments.git](https://github.com/ali-nur31/online-physics-experiments.git)
+git clone https://github.com/ali-nur31/online-physics-experiments.git
 cd online-physics-experiments
 ```
 ### 2. Environment Variables
