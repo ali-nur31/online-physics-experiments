@@ -69,14 +69,16 @@ The project follows the standard Go project layout and Clean Architecture:
 │   └── app
 │       └── main.go          # Entry point, dependency injection
 ├── internal
-│   ├── domain
-│   │   └── models           # Database models (GORM structs)
+│   ├── api
+│   │   ├── handlers         # HTTP Handlers (Controllers)
+│   │   └── router.go        # Router
+│   ├── app
+│   │   └── app.go           # App initializer
+│   ├── model                # Database models (GORM structs)
 │   ├── repository           # Data Access Layer (SQL/GORM operations)
 │   │   └── migrations       # SQL migration files
-│   ├── service              # Business Logic Layer
-│   └── transport
-│       └── rest             # HTTP Handlers (Controllers)
+│   └── service              # Business Logic Layer
 ├── Dockerfile
-├── docker-compose.yml
+├── docker-compose.yaml
 └── go.mod
 ```
