@@ -9,5 +9,6 @@ type Experiment struct {
 	FullContent      string    `gorm:"not null" json:"full_content"`
 	ImageUrl         *string   `json:"image_url"`
 	VideoUrl         *string   `json:"video_url"`
+	Category         string    `gorm:"size:255; not null" json:"category"`
 	CreatedAt        time.Time `json:"created_at"`
 }

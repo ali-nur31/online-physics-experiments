@@ -36,6 +36,16 @@ func (eh *ExperimentHandler) GetExperiment(w http.ResponseWriter, r *http.Reques
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(experiment)
+	} else if categoryStr := chi.URLParam(r, "category"); categoryStr != "" {
+		experiments, err := eh.experimentService.GetByCategory(r.Context(), categoryStr)
+		if err != nil {
+			slog.Error("experiment not found", "error", err)
+			http.Error(w, "Experiment not found", http.StatusNotFound)
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(experiments)
 	} else {
 		experiments, err := eh.experimentService.GetAll(r.Context())
 		if err != nil {

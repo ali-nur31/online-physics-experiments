@@ -10,6 +10,7 @@ import (
 
 type ExperimentRepository interface {
 	GetByID(ctx context.Context, id uint) (*model.Experiment, error)
+	GetByCategory(ctx context.Context, category string) (*[]model.Experiment, error)
 	GetAll(ctx context.Context) (*[]model.Experiment, error)
 }
 
@@ -31,6 +32,18 @@ func (er *postgresExperimentRepository) GetByID(ctx context.Context, id uint) (*
 	}
 
 	return &experiment, nil
+}
+
+func (er *postgresExperimentRepository) GetByCategory(ctx context.Context, category string) (*[]model.Experiment, error) {
+	var experiments []model.Experiment
+
+	err := er.db.WithContext(ctx).Find(&experiments, category).Error
+	if err != nil {
+		slog.Error("failed to find user by presented id", "error", err)
+		return nil, err
+	}
+
+	return &experiments, nil
 }
 
 func (er *postgresExperimentRepository) GetAll(ctx context.Context) (*[]model.Experiment, error) {

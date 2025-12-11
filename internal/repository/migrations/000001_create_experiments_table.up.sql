@@ -5,5 +5,6 @@ CREATE TABLE experiments (
     full_content TEXT NOT NULL,
     image_url TEXT,
     video_url TEXT,
+    category VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );

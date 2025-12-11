@@ -29,6 +29,7 @@ func NewRouter(db *gorm.DB) *chi.Mux {
 
 	r.Route("/experiments", func(r chi.Router) {
 		r.Get("/", experimentHandler.GetExperiment)
+		r.Get("/{category}", experimentHandler.GetExperiment)
 		r.Get("/{id}", experimentHandler.GetExperiment)
 	})
 

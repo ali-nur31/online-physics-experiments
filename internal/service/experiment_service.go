@@ -8,6 +8,7 @@ import (
 
 type ExperimentService interface {
 	GetByID(ctx context.Context, id uint) (*model.Experiment, error)
+	GetByCategory(ctx context.Context, category string) (*[]model.Experiment, error)
 	GetAll(ctx context.Context) (*[]model.Experiment, error)
 }
 
@@ -21,6 +22,10 @@ func NewExperimentService(repository repository.ExperimentRepository) Experiment
 
 func (es experimentService) GetByID(ctx context.Context, id uint) (*model.Experiment, error) {
 	return es.experimentRepository.GetByID(ctx, id)
+}
+
+func (es experimentService) GetByCategory(ctx context.Context, category string) (*[]model.Experiment, error) {
+	return es.experimentRepository.GetByCategory(ctx, category)
 }
 
 func (es experimentService) GetAll(ctx context.Context) (*[]model.Experiment, error) {
