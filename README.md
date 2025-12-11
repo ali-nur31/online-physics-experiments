@@ -56,8 +56,9 @@ go run ./cmd/app/main.go
 Experiments
 Method	URL	Description
 ```
-GET	/experiments	        Get all experiments
-GET	/experiments/{id}	Get specific experiment details
+GET	/experiments	           Get all experiments
+GET	/experiments/{id}	   Get specific experiment details
+GET     /experiments/{category}    Get experiments by category field
 ```
 📂 Project Structure
 
