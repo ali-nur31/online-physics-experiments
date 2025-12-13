@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Play, Download, Clock, BarChart, Loader2 } from 'lucide-react';
 import { Button } from '../components/Button';
 import { ButtonVariant, Experiment } from '../types';
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const PhysicsDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();

@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle, Globe, PlayCircle, Users, Loader2 } from 'luci
 import { ExperimentCard } from '../components/ExperimentCard';
 import { Button } from '../components/Button';
 import { ButtonVariant, Experiment } from '../types';
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const Home: React.FC = () => {
   const [featuredExperiments, setFeaturedExperiments] = useState<Experiment[]>([]);

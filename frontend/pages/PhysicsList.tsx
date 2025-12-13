@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Search, Filter, Loader2 } from 'lucide-react';
 import { ExperimentCard } from '../components/ExperimentCard';
 import { Experiment } from '../types';
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const PhysicsList: React.FC = () => {
   const [experiments, setExperiments] = useState<Experiment[]>([]);
