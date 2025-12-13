@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Play, Download, Clock, BarChart, Loader2 } from 'lucide-react';
 import { Button } from '../components/Button';
-import { ButtonVariant, Experiment } from '../types'; 
+import { ButtonVariant, Experiment } from '../types';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const PhysicsDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -13,7 +14,7 @@ export const PhysicsDetail: React.FC = () => {
   useEffect(() => {
     const fetchOne = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/experiments/${id}`);
+        const response = await fetch(`${API_URL}/${id}`);
         if (!response.ok) throw new Error('Not found');
         const data = await response.json();
         setExperiment(data);

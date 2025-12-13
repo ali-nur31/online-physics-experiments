@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, Globe, PlayCircle, Users, Loader2 } from 'luci
 import { ExperimentCard } from '../components/ExperimentCard';
 import { Button } from '../components/Button';
 import { ButtonVariant, Experiment } from '../types';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const Home: React.FC = () => {
   const [featuredExperiments, setFeaturedExperiments] = useState<Experiment[]>([]);
@@ -12,7 +13,7 @@ export const Home: React.FC = () => {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        const response = await fetch('http://localhost:8080/experiments');
+        const response = await fetch(`${API_URL}/experiments`);
         if (response.ok) {
           const data = await response.json();
           setFeaturedExperiments((data || []).slice(0, 3));

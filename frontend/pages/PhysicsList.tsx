@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Search, Filter, Loader2 } from 'lucide-react';
 import { ExperimentCard } from '../components/ExperimentCard';
 import { Experiment } from '../types';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const PhysicsList: React.FC = () => {
   const [experiments, setExperiments] = useState<Experiment[]>([]);
@@ -14,7 +15,7 @@ export const PhysicsList: React.FC = () => {
   useEffect(() => {
     const fetchExperiments = async () => {
       try {
-        const response = await fetch('http://localhost:8080/experiments');
+        const response = await fetch(`${API_URL}/experiments`);
         if (!response.ok) throw new Error('Failed to fetch data');
         const data = await response.json();
         setExperiments(data || []);
